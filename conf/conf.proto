@@ -1,0 +1,18 @@
+syntax = "proto3";
+package dailyreport;
+
+option go_package = "github.com/mizumoto-cn/dailyreport/conf;conf";
+
+message SmtpDialer {
+    bool insecure_skip_verify = 1;
+    string host = 2;
+    int32 port = 3;
+    string username = 4;
+    string password = 5;
+    string endpoint = 6;
+    repeated string to = 7;
+}
+
+message path {
+    string path = 1;
+}
