@@ -1,0 +1,14 @@
+name: dailyreport
+smtp_dialer:
+  insecure_skip_verify: true
+  host: smtp.gmail.com
+  port: 587
+  username: username
+  password: password
+  endpoint: https://127.0.0.1:5173
+  string: [
+    "mizumotokunn@gmail.com",
+    "mail@example.com"
+  ]
+path:
+  path: ./dailyreport.txt
