@@ -30,12 +30,6 @@ func NewEmailFormatter(conf *conf.SmtpDialer) EmailFormatter {
 			<p>` + token + `</p>
 			<br />
 			<p>--</p>
-			<p>株式会社  イー・ビジネス　　</p>
-			<p>イノベーション事業部　</p>
-			<p>DXソリューション部</p>
-			<p><b>徐　瑞元</b></p>
-			<p>Mobile: 080-7101-8913</p>
-			<p>E-mail: xurb@revolvesys.co.jp</p>
 		</body>
 		</html>
 		`
