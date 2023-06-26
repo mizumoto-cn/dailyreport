@@ -2,6 +2,7 @@ package post
 
 import (
 	"context"
+	"log"
 
 	"github.com/mizumoto-cn/dailyreport/conf"
 	"github.com/mizumoto-cn/dailyreport/pkg/util"
@@ -17,6 +18,7 @@ func (p SMTPMailPoster) Post(ctx context.Context, token ...string) error {
 	if err := util.NewSmtpDialer(p.cfg).DialAndSend(m); err != nil {
 		return err
 	}
+	log.Println("send mail success")
 	return nil
 }
 

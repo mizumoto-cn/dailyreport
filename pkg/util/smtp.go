@@ -33,7 +33,7 @@ func NewEmailFormatter(conf *conf.SmtpDialer) EmailFormatter {
 	}
 	return func(to []string, token ...string) *gomail.Message {
 		currentDate := time.Now().Format("20060102")
-		body := fmt.Sprintf(template, token)
+		body := fmt.Sprintf(template, convertToAnySlice(token)...)
 		m := gomail.NewMessage()
 		m.SetHeader("From", conf.Username)
 		m.SetHeader("To", to...)
@@ -41,4 +41,12 @@ func NewEmailFormatter(conf *conf.SmtpDialer) EmailFormatter {
 		m.SetBody("text/html", body)
 		return m
 	}
+}
+
+func convertToAnySlice(slice []string) []any {
+	is := make([]any, len(slice))
+	for i, s := range slice {
+		is[i] = s
+	}
+	return is
 }
