@@ -52,7 +52,7 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
 > See [template](./template) folder for the template files.
 > > [template/dailyreport.txt](./template/dailyreport.txt) is the template for the daily report content.
 > > [template/template.html](./template/template.html) is the template for the daily report email.
-> > [template/config.yaml.template](./template/config.yaml.template) is the template for the configuration file.
+> > [template/config.yaml.tmp](./template/config.yaml.tmp) is the template for the configuration file.
 
 ## License
 
