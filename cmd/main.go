@@ -31,8 +31,8 @@ func main() {
 	if err := c.Load(); err != nil {
 		panic(err)
 	}
-	var sdc conf.SmtpDialer
-	if err := c.Scan(&sdc); err != nil {
+	var bc conf.Bootstrap
+	if err := c.Scan(&bc); err != nil {
 		panic(err)
 	}
 	post.DefaultPosterFactoryMap().Register(
@@ -40,17 +40,14 @@ func main() {
 		post.PosterFactoryFunc(func(ctx context.Context, pc any) (post.Poster, error) {
 			return post.NewSmtpMailPoster(util.NewEmailFormatter(pc.(*conf.SmtpDialer)), pc.(*conf.SmtpDialer)), nil
 		}),
-		&sdc,
+		bc.SmtpDialer,
 	)
-	var pc conf.Path
-	if err := c.Scan(&pc); err != nil {
+
+	token, err := util.ReadFile(bc.Path.ContentsPath)
+	if err != nil && token == nil {
 		panic(err)
 	}
-	token, err := util.ReadFile(pc.Path)
-	if err != nil {
-		panic(err)
-	}
-	if err := post.Post(context.Background(), "smtp", token); err != nil {
+	if err := post.Post(context.Background(), "smtp", token...); err != nil {
 		panic(err)
 	}
 }

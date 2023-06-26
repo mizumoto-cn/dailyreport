@@ -3,16 +3,21 @@ package dailyreport;
 
 option go_package = "github.com/mizumoto-cn/dailyreport/conf;conf";
 
+message Bootstrap {
+    SmtpDialer smtp_dialer = 1;
+    Path path = 2;
+}
+
 message SmtpDialer {
     bool insecure_skip_verify = 1;
     string host = 2;
     int32 port = 3;
     string username = 4;
     string password = 5;
-    string endpoint = 6;
-    repeated string to = 7;
+    repeated string to = 6;
+    string template_path = 7;
 }
 
-message path {
-    string path = 1;
+message Path {
+    string contents_path = 1;
 }

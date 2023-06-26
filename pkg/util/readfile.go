@@ -4,15 +4,14 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
 )
 
-func ReadFile(path string) (string, error) {
+func ReadFile(path string) ([]string, error) {
 	// readlines add <p> to the beginning of the line and </p> to the end of the line
 	lines := []string{}
 	f, err := os.Open(path)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	defer f.Close()
 	scanner := bufio.NewScanner(f)
@@ -24,7 +23,7 @@ func ReadFile(path string) (string, error) {
 	}
 
 	if err := scanner.Err(); err != nil {
-		return strings.Join(lines, ""), err
+		return lines, err
 	}
-	return strings.Join(lines, ""), nil
+	return lines, nil
 }

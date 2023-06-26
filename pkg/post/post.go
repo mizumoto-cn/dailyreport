@@ -24,10 +24,10 @@ func CreatePoster(ctx context.Context, name string) (Poster, error) {
 	return posters.CreatePoster(ctx, name)
 }
 
-func Post(ctx context.Context, name string, token string) error {
+func Post(ctx context.Context, name string, token ...string) error {
 	p, err := posters.CreatePoster(ctx, name)
 	if err != nil {
 		return err
 	}
-	return p.Post(ctx, token)
+	return p.Post(ctx, token...)
 }

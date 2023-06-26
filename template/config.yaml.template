@@ -5,10 +5,10 @@ smtp_dialer:
   port: 587
   username: username
   password: password
-  endpoint: https://127.0.0.1:5173
-  string: [
-    "mizumotokunn@gmail.com",
-    "mail@example.com"
-  ]
+  to: 
+    - mizumotokunn@gmail.com
+    - mail@example.com
+  template_path: ./template.html
+
 path:
-  path: ./dailyreport.txt
+  contents_path: ./dailyreport.txt

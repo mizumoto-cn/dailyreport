@@ -12,8 +12,8 @@ type SMTPMailPoster struct {
 	cfg       *conf.SmtpDialer
 }
 
-func (p SMTPMailPoster) Post(ctx context.Context, token string) error {
-	m := p.formatter(p.cfg.To, token)
+func (p SMTPMailPoster) Post(ctx context.Context, token ...string) error {
+	m := p.formatter((p.cfg.To), token...)
 	if err := util.NewSmtpDialer(p.cfg).DialAndSend(m); err != nil {
 		return err
 	}

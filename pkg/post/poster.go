@@ -3,7 +3,7 @@ package post
 import "context"
 
 type Poster interface {
-	Post(ctx context.Context, token string) error
+	Post(ctx context.Context, token ...string) error
 }
 
 type PosterFactory interface {

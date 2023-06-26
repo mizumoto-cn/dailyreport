@@ -1,6 +1,9 @@
 package util
 
 import (
+	"bufio"
+	"fmt"
+	"os"
 	"time"
 
 	"github.com/mizumoto-cn/dailyreport/conf"
@@ -12,31 +15,29 @@ func NewSmtpDialer(conf *conf.SmtpDialer) *gomail.Dialer {
 	return d
 }
 
-type EmailFormatter func([]string, string) *gomail.Message
+type EmailFormatter func([]string, ...string) *gomail.Message
 
 // . NewEmailFormatter
 func NewEmailFormatter(conf *conf.SmtpDialer) EmailFormatter {
-	return func(to []string, token string) *gomail.Message {
+	tPath := conf.TemplatePath
+	f, err := os.Open(tPath)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+	template := ""
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		line := scanner.Text()
+		template += line
+	}
+	return func(to []string, token ...string) *gomail.Message {
 		currentDate := time.Now().Format("20060102")
-		body := `<!DOCTYPE html>
-		<html>
-		<head>
-			<meta charset="utf-8">
-			<title>進捗報告 ` + currentDate + `</title>
-		</head>
-		<body>
-			<p>本日は以下の仕事をしました。</p>
-			<br />
-			<p>` + token + `</p>
-			<br />
-			<p>--</p>
-		</body>
-		</html>
-		`
+		body := fmt.Sprintf(template, token)
 		m := gomail.NewMessage()
 		m.SetHeader("From", conf.Username)
 		m.SetHeader("To", to...)
-		m.SetHeader("Subject", "Reset Password")
+		m.SetHeader("Subject", "進捗報告 "+currentDate)
 		m.SetBody("text/html", body)
 		return m
 	}
