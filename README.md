@@ -20,9 +20,17 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
 3. Run
 
     ```bash
-    cd dailyreport/cmd
-    go run .
+    make setup
     ```
+
+    to copy the template and configuration files to the directories.
+    then:
+
+    ```bash
+    make run-cmd
+    ```
+
+    ![()](./template/run-cmd.png)
 
 4. Use Crontab for periodically running the program.
 
