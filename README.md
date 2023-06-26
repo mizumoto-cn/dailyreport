@@ -16,6 +16,12 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
     go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
     ```
 
+    And add `$GOPATH/bin` to your `$PATH` environment variable. In Linux, like this:
+
+    ```bash
+    export PATH="$PATH:$(go env GOPATH)/bin"
+    ```
+
 2. Clone this repository.
 
     ```bash
