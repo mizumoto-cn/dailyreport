@@ -4,11 +4,15 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
 
 ## Quick Start
 
-1. Install Go 1.20 or later.
+1. Install Go 1.20 or later. Install protoc.
 
     ```bash
     $ go version
     go version go1.20.5 linux/amd64
+    ```
+
+    ```bash
+    sudo apt install -y protobuf-compiler
     ```
 
 2. Clone this repository.
