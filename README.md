@@ -35,7 +35,7 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
     ```
 
     to copy the template and configuration files to the directories.
-    then:
+    then after completing the [configuration](#configuration-file), run:
 
     ```bash
     make run-cmd
