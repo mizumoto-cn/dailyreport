@@ -2,8 +2,9 @@ package util
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
+	"time"
 )
 
 func ReadFile(path string) ([]string, error) {
@@ -18,7 +19,7 @@ func ReadFile(path string) ([]string, error) {
 	for scanner.Scan() {
 		line := scanner.Text()
 		line = "<p>" + line + "</p>"
-		fmt.Println(line)
+		log.Printf("%s read line: %s", time.Now().Format("2006-01-02 15:04:05"), line)
 		lines = append(lines, line)
 	}
 

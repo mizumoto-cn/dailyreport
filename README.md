@@ -14,6 +14,7 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
     ```bash
     sudo apt install -y protobuf-compiler
     go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+    go install github.com/golang/mock/mockgen@latest
     ```
 
     And add `$GOPATH/bin` to your `$PATH` environment variable. In Linux, like this:
@@ -61,7 +62,7 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
     Add the following line to the crontab file. After you build it.
 
     ```bash
-    55 17 * * 1-5 /path/to/dailyreport/bin/dailyreport
+    55 17 * * 1-5 /path/to/dailyreport/bin/dailyreport 2>> /path/to/your.log
     ```
 
     This will run the program at 17:55 from Monday to Friday.

@@ -20,6 +20,7 @@ conf:
 setup:
 	$(CP)
 	$(MAKE) conf
+	go mod tidy
 
 .PHONY: run-cmd
 run-cmd:
@@ -27,7 +28,7 @@ run-cmd:
 
 .PHONY: build
 build:
-	cd cmd && go build -o $(OUT) main.go && cd ..
+	go mod tidy && cd cmd && go build -o $(OUT) main.go && cd ..
 
 .PHONY: build-run
 build-run: build
