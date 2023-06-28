@@ -1,16 +1,18 @@
-package post
+package post_test
 
 import (
 	"context"
 	"errors"
 	"testing"
+
+	. "github.com/mizumoto-cn/dailyreport/pkg/post"
 )
 
-type mockPoster struct{}
+// type mockPoster struct{}
 
-func (p *mockPoster) Post(ctx context.Context, token ...string) error {
-	return nil
-}
+// func (p *mockPoster) Post(ctx context.Context, token ...string) error {
+// 	return nil
+// }
 
 type mockPosterFactory struct{}
 
