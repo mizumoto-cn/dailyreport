@@ -43,16 +43,25 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
 
     ![()](./template/run-cmd.png)
 
-4. Use Crontab for periodically running the program.
+    Or you can run the program directly after build
+
+    ```bash
+    make build-run
+    ```
+
+    ![()](./template/makebuild.png)
+    ![()](./template/makebuildrun.png)
+
+4. Use Crontab for periodically running the program. (Linux or **Windows WSL**(recommended))
 
     ```bash
     crontab -e
     ```
 
-    Add the following line to the crontab file.
+    Add the following line to the crontab file. After you build it.
 
     ```bash
-    55 17 * * 1-5 cd /path/to/dailyreport/cmd && go run .
+    55 17 * * 1-5 /path/to/dailyreport/bin/dailyreport
     ```
 
     This will run the program at 17:55 from Monday to Friday.

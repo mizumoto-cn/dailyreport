@@ -23,3 +23,8 @@ go.work
 config.yaml
 dailyreport.txt
 template.html
+
+# Build output
+main
+dailyreport
+bin/
