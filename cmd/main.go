@@ -31,6 +31,7 @@ func main() {
 	if err := c.Load(); err != nil {
 		panic(err)
 	}
+
 	var bc conf.Bootstrap
 	if err := c.Scan(&bc); err != nil {
 		panic(err)
