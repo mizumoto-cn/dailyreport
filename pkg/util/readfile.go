@@ -18,7 +18,6 @@ func ReadFile(path string) ([]string, error) {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		line := scanner.Text()
-		line = "<p>" + line + "</p>"
 		log.Printf("%s read line: %s", time.Now().Format("2006-01-02 15:04:05"), line)
 		lines = append(lines, line)
 	}
