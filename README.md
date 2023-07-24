@@ -42,7 +42,7 @@ A Go program to generate and share daily work reports. License: MGPL.v1.4. All r
     make run-cmd
     ```
 
-    ![()](./template/run-cmd.png)
+    ![()](./template/run-cmd.PNG)
 
     Or you can run the program directly after build
 
